@@ -20,7 +20,7 @@ int main(void) {
  	printf("\nDigite n para calcular o potencia: ");
 	fflush(stdin);
 	scanf("%d", &n);
-  printf("A potencia de %lf^%d = %lf", x, n, recursivePow(x, n));
+  printf("A potencia de %.2lf^%d = %.2lf", x, n, recursivePow(x, n));
   printf("\nSucesso\n");
   return 0;
 }
