@@ -3,7 +3,7 @@
  Name        : mdcRecursivo.c
  Author      : Lucas Santos
  Version     :
- Copyright   : 
+ Copyright   :
  Description : Metodo de verificar o mdc de forma recursiva
  ============================================================================
  */
