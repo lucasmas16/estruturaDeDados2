@@ -17,13 +17,20 @@ long fibonacciRecursivo (long n){
   return fibonacciRecursivo(n-1) + fibonacciRecursivo(n-2);
 }
 
+long fibonacciTail(int n, long ult, long pult){
+  if(n==0) return pult;
+  return fibonacciTail(n-1, ult + pult, ult);
+}
 
+long fibTail(int n){
+  fibonacciTail(n, 1, 0);
+}
 
 int main (void){
   long a, resp;
   printf("\nDigite o numero elementos da sequencia de fibonacci desejados: ");
   fflush(stdin);
   scanf("%ld", &a);
-  resp = fibonacciRecursivo(a);
+  resp = fibTail(a);
   printf("\nO fibonacci desejado é: %ld", resp);
 }
