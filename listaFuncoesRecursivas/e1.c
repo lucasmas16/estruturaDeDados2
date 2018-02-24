@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : 3.c
+ Name        : e1.c
  Author      : Lucas Santos
  Version     :
  Copyright   :
@@ -13,12 +13,16 @@
 #include <string.h>
 
 int invt(char* c, int t){
-  if(t > strlen(c)) invt(c, t - 2);
   char aux;
   aux = c[strlen(c) - t];
   c[strlen(c) - t] = c[t-1];
   c[t-1] = aux;
-  printf("%s\n", c);
+  printf("\n%s", c);
+  if(t>(strlen(c)/2)+1) invt(c, t - 1);
+}
+
+void inv(char* c){
+  invt(c, strlen(c));
 }
 
 int main (void){
@@ -26,7 +30,7 @@ int main (void){
   printf("\nDigite o nome: ");
   fflush(stdin);
   gets(a);
-  invt(a, strlen(a));
+  inv(a);
   printf("\nO resultado desejado é: %s", a);
   return 0;
 }

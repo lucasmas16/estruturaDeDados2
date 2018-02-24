@@ -13,7 +13,7 @@
 
 void calculo(int n, int q){
   if(q > 1) calculo(n, q-1);
-  printf("%d + %d = %d\n", n, q, n*q);
+  printf("%d x %d = %d\n", n, q, n*q);
 }
 
 int main (void){

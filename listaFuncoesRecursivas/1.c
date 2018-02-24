@@ -1,10 +1,10 @@
 /*
  ============================================================================
- Name        : fibonacciRecursivo.c
+ Name        : 1.c
  Author      : Lucas Santos
  Version     :
  Copyright   :
- Description : Metodo de fibonacci Recursivo
+ Description : lista de exercícios de recursividade
  ============================================================================
  */
 
