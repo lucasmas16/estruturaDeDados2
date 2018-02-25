@@ -4,7 +4,7 @@
  Author      : Lucas Santos
  Version     :
  Copyright   :
- Description : lista de exercícios de recursividade - Palindromo
+ Description : lista de exercícios de recursividade - Conversor de Binário
  ============================================================================
  */
 
