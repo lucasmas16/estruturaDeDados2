@@ -68,6 +68,24 @@ void binInt(int n, Palavra *resp){
     }
 }
 
+//funcao de conversão não de cauda que gera um inteiro
+long binC(int n){
+    if(n < 2){
+        return n;
+    }else{
+        return 10 * binC(n / 2) + (n % 2);
+    }
+}
+
+//funcao de conversão de cauda que gera um inteiro
+long binC_tl(int n, int pot, int res){
+    if(n == 0){
+        return res;
+    }else{
+        binC_tl(n/2, 10 * pot, (n % 2)*pot + res);
+    }
+}
+
 int main (void){
     Palavra *resp;
     newPalavra(resp);
@@ -79,5 +97,6 @@ int main (void){
     scanf("%d", &x);
     binInt(x, resp);
     printPalavra(resp);
+    printf("\n");
     return 0;
 }

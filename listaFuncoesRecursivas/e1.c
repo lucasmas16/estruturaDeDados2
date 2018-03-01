@@ -21,8 +21,18 @@ int invt(char* c, int t){
   if(t>(strlen(c)/2)+1) invt(c, t - 1);
 }
 
+int invtC(char *s, int tam){
+  char c;
+  if(tam > 1){
+    c = s[0];
+    s[0] = s[tam - 1];
+    s[tam - 1] = c;
+    invtC(s + 1, tam - 2);
+  }
+}
+
 void inv(char* c){
-  invt(c, strlen(c));
+  invtC(c, strlen(c));
 }
 
 int main (void){
