@@ -33,7 +33,7 @@ void push(Pilha *pilha, Item newItem){
 void pop(Pilha *pilha, Apontador new){
   new = (Apontador)malloc(sizeof(Celula));//inicializa o novo elemento
   new = pilha->topo;//o novo elemento recebe o topo
-  if(topo != NULL){//verifica se a pilha não está vazia
+  if(pilha->topo != NULL){//verifica se a pilha não está vazia
     pilha->topo = pilha->topo->next;//o topo passa a ser o segundo elemento
   }
 }
