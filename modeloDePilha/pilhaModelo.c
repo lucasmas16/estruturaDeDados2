@@ -39,6 +39,6 @@ void pop(Pilha *pilha, Apontador new){
 }
 
 //retorna o conteudo do primeiro elemento para efetuar comparações
-char watch(Pilha *pilha){
+char look(Pilha *pilha){
   return pilha->topo->item.chave;
 }
