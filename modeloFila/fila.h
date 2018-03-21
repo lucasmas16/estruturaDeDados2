@@ -1,6 +1,6 @@
 //define que o tipo de item da fila
 typedef struct {
-  char chave;
+  int chave;
 }Item;
 
 //Define um ponteiro para poder referênciar dentro da estrutura da célula
