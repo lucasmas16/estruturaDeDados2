@@ -1,3 +1,6 @@
+#if !defined(FILA_H)
+#define FILA_H
+
 //define que o tipo de item da fila
 typedef struct {
   int chave;
@@ -17,4 +20,12 @@ typedef struct Cel{
 typedef struct Fila{
   PONT start, end;
   int size;
-} Pilha;
+} Fila;
+
+//Protótipos
+int newFila(Fila *fila);
+int empty(Fila fila);
+int insert(Fila*, Item);
+int remove_F(Fila*, Item*);
+
+#endif
