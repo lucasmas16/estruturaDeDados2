@@ -1,6 +1,8 @@
 #include "Pilha.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 #define EOE '#'
 
 int opera(char, Pilha*);
@@ -11,38 +13,38 @@ int main (int argc, char *argv[]){
     	printf("\nExpressão não informada!\n");
     	return -1;
   	}
-	
-	//Cria um ponteiro que aponta para 
-  	char *expre = &argv[1];
-	
+
+	//Cria um ponteiro que aponta para
+  	char *expre = argv[1];
+
 	//Criação de itens auxiliares
 	Item operadorI;
 	Item operandoI;
-	
+
 	//Criação de lista de operadores e operandos
   	Pilha operadorP, operandoP;
   	newPilha(&operadorP);
   	newPilha(&operandoP);
-	
+
 	//insere o elemento final da pilha do operandos
 	operadorI.op = EOE;
-	push(&operadorP);
-	
-	while(*expre == '\0'){
+	push(&operadorP, operadorI);
+
+	while(*expre != '\0'){
 		if(isspace(*expre)) continue;
 		switch(*expre){
 			case '+':
 			case '-':
 				if(look(&operadorP, &operadorI) == -1){
-					printf("Expressão inválida!");
+					printf("Expressão inválida1!");
 					return -1;
 				}
-				if(operadorI.op == '+' || operadorI.op == '-' || 
-				   operadorI.op == '/' || operadorI.op == '*' || 
+				if(operadorI.op == '+' || operadorI.op == '-' ||
+				   operadorI.op == '/' || operadorI.op == '*' ||
 				   operadorI.op == 'x'){
 					pop(&operadorP, &operadorI);
 					if(opera(operadorI.op, &operandoP) == -1){
-						printf("Expressão inválida!");
+						printf("Expressão inválida2!");
 						return -1;
 					}
 				}
@@ -53,14 +55,14 @@ int main (int argc, char *argv[]){
 			case 'x':
 			case '/':
 				if(look(&operadorP, &operadorI) == -1){
-					printf("Expressão inválida!");
+					printf("Expressão inválida3!");
 					return -1;
 				}
-				if(operadorI.op == '/' || operadorI.op == '*' || 
+				if(operadorI.op == '/' || operadorI.op == '*' ||
 				   operadorI.op == 'x'){
 					pop(&operadorP, &operadorI);
 					if(opera(operadorI.op, &operandoP) == -1){
-						printf("Expressão inválida!");
+						printf("Expressão inválida4!");
 						return -1;
 					}
 				}
@@ -73,12 +75,11 @@ int main (int argc, char *argv[]){
 				break;
 			case ')':
 				do{
-					if(look(&operadorP, &operadorI) == -1){
+					if(pop(&operadorP, &operadorI) == -1){
 						printf("Expressão inválida!");
 						return -1;
 					}
 					if(operadorI.op != '('){
-						pop(&operadorP, &operadorI);
 						if(opera(operadorI.op, &operandoP) == -1){
 							printf("Expressão inválida!");
 							return -1;
@@ -91,10 +92,10 @@ int main (int argc, char *argv[]){
 					printf("Expressão inválida!");
 					return -1;
 				}
-				operandoI.op = (int)(*expre - 'o');
+				operandoI.op = (int)(*expre - 48);
 				push(&operandoP, operandoI);
-				break;	
 		}
+		printf("Elemento no laço: %c\n", *expre);
 		expre++;
 	}
 	do{
@@ -110,12 +111,12 @@ int main (int argc, char *argv[]){
 			}
 		}
 	}while(operadorI.op != EOE);
+	printf("Tamanho da pilha %d\n", operandoP.size);
 	if(operandoP.size != 1){
-		printf("Expressão inválida");
+		printf("Expressão inválida!");
 		return -1;
 	}
 	pop(&operandoP, &operandoI);
-	printf("Resultado da operação é: %d", operandoI.op);
 	return 0;
 }
 
@@ -148,13 +149,3 @@ int opera(char op, Pilha *operando){
 	push(operando, operandoI);
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
