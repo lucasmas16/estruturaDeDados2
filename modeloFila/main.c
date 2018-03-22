@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "fila.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 
 int main(void){
@@ -8,37 +8,45 @@ int main(void){
   Item aux;
   Fila filaTeste;
   newFila(&filaTeste);
+  printf("\n1 - Verificar se está vazia\n");
+  printf("2 - Inserir número\n");
+  printf("3 - Remover número\n");
+  printf("0 - Sair do programa!\n");
+  printf("Digite a opção desejada: ");
+  scanf("%d", &op);
   do{
-    printf("1 - Verificar se está vazia");
-    printf("2 - Inserir número");
-    printf("3 - Remover número");
+    printf("\n1 - Verificar se está vazia\n");
+    printf("2 - Inserir número\n");
+    printf("3 - Remover número\n");
+    printf("0 - Sair do programa!\n");
     printf("Digite a opção desejada: ");
     scanf("%d", &op);
     switch (op){
       case 0:
-        printf("Fim do programa!");
+        printf("Fim do programa!\n");
         break;
       case 1:
         if(empty(filaTeste)){
-          printf("Lista vazia");
+          printf("Lista vazia\n");
         }
         break;
       case 2:
-        printf("Digite um número a ser inserido: ");
+        printf("\nDigite um número a ser inserido: ");
         scanf("%d", &iAux);
         aux.chave = iAux;
+        printf("Elemento inserido %d\n", aux.chave);
         insert(&filaTeste, aux);
         break;
       case 3:
-        iAux = remove(&filaTeste, &aux);
+        iAux = remove_F(&filaTeste, &aux);
         if(iAux == 0){
-          printf("O elemento removido foi: %d", aux.chave);
+          printf("\nO elemento removido foi: %d", aux.chave);
         }else{
-          printf("Lista vazia ou erro ao remover!");
+          printf("\nLista vazia ou erro ao remover!");
         }
         break;
       default:
-        printf("Digite um opção válida!");
+        printf("\nDigite um opção válida!");
         break;
     }
   }while(op != 0);
