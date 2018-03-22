@@ -1,6 +1,9 @@
+#if !defined(PILHA_H)
+#define PILHA_H
+
 //define que o tipo de item
 typedef struct {
-  int chave;
+  char op;
 }Item;
 
 //Define um ponteiro para poder referênciar dentro da estrutura da célula
@@ -15,6 +18,14 @@ typedef struct Cel{
 
 //Estrutura de Pilha usando um apontador no começo e um no fim
 typedef struct Pilha{
-  Apontador start, end;
-  int size;
+	PONT start, end;
+	int size;
 } Pilha;
+
+int newPilha(Pilha*);
+int empty(Pilha);
+void push(Pilha*, Item);
+void pop(Pilha*, Item*);
+int look(Pilha*, Item*);
+
+#endif
