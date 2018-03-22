@@ -24,8 +24,8 @@ typedef struct Pilha{
 
 int newPilha(Pilha*);
 int empty(Pilha);
-void push(Pilha*, Item);
-void pop(Pilha*, Item*);
+int push(Pilha*, Item);
+int pop(Pilha*, Item*);
 int look(Pilha*, Item*);
 
 #endif
