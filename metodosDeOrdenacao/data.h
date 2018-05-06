@@ -1,6 +1,6 @@
 #if !defined(DATA_H)
 #define DATA_H
-#define MAXTAM  25  /* Altere de acordo com seus testes */
+#define MAXTAM  10  /* Altere de acordo com seus testes */
 
 typedef int CHAVE;
 
