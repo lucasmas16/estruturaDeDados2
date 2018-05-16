@@ -67,6 +67,12 @@ int rem(DICIONARIO d, ITEM i){
 }
 
 int main(){
+    FILE *entrada;
+    entrada = fopen("data.txt", "r");
+    if(entrada == NULL){
+        printf("Erro de leitura!");
+        return -1;
+    }
     DICIONARIO dic;
     newDic(dic);
     ITEM temp;
@@ -79,12 +85,9 @@ int main(){
         scanf("%d", &op);
         switch(op){
             case 1:
-                printf("\nDigite o elemento a ser inserido: ");
-                scanf("%s", temp.nome);
-                printf("Digite o preco do elemento:");
-                scanf("%lf", &temp.preco);
+                fscanf(entrada, "%s %lf", temp.nome, &temp.preco);
                 if(insert(dic, temp) != -1){
-                    printf("\nItem inserido com sucesso!");
+                    printf("\nItem inserido com sucesso!\n");
                 }else{
                     printf("\nErro ao inserir o produto!\n");
                 }

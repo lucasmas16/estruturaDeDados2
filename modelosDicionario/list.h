@@ -1,69 +1,30 @@
 #if !defined(LIST_H)
     #define LIST_H
-    #include <stdlib.h>
-    #include <string.h>
     #include "item.h" //inclue a strutura do item e alguns auxiliares
 
+    //ponteiro de celula
     typedef struct Celula_N *PONT;
 
+    //estrutura da celula
     typedef struct Celula_N {
         ITEM item;
         PONT next;
     } Cel;
 
+    //Estrutura inicial da lista
     typedef struct{
         PONT first, last;
     } LIST;
 
-    void newList(LIST *list){
-        list->first = (PONT) malloc(sizeof(Cel));
-        list->last = list->first;
-        list->first->next = NULL;
-    }
+    typedef LIST DICIONARIO[M];
 
-    void insertList(ITEM item, LIST *list){
-        list->last->next = (PONT) malloc(sizeof(Cel));
-        list->last = list->last->next;
-        list->last->item = item;
-        list->last->next = NULL;
-    }
+    void newList(LIST*);
 
-    int removeList(ITEM *item, LIST *list){
-        PONT run, aux;
-        run = list->first;
-        while(run->next != NULL){
-            if(strncmp(run->next->item.nome, item->nome, N)){
-                run = run->next;
-            }else{
-                *item = run->next->item;
-                aux = run->next;
-                run->next = run->next->next;
-                free(aux);
-                return 0;
-            }
-        }
-        return -1;
-    }
+    void insertList(ITEM, LIST*);
 
-    int searchList(ITEM *item, LIST list){
-        PONT run, aux;
-        run = list.first;
-        while(run->next != NULL){
-            if(strncmp(run->next->item.nome, item->nome, N)){
-                run = run->next;
-            }else{
-                return 0;
-            }
-        }
-        return -1;
-    }
+    int removeList(ITEM*, LIST*);
 
-    int voidList(LIST list){
-        if(list.first == list.last){
-            return 0;
-        }
-        return -1;
-    }
+    int searchList(ITEM*, LIST);
 
-
+    int voidList(LIST);
 #endif
